@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ This is the important verification tag -->
+  <meta name="google-site-verification" content="u-ZaJ4miabmR9cvJWj_ZP1U2QkAx2Hak2-FPTl-IL6s" />
+
+  <title>Velvet Brew Café</title>
+</head>
+</html>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: linear-gradient(135deg, #2d1f16, #1e130c);
+    --text: #f7e8d0;
+    --accent: #d4af7f;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --blur: blur(10px);
+    --cursor-color: #d4af7f;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0; font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    background-attachment: fixed;
+    transition: all 0.5s ease;
+    cursor: none;
+  }
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 50px;
+    backdrop-filter: var(--blur);
+    background-color: rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  nav ul li {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  nav ul li a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover {
+    color: #b28850;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: var(--accent);
+  }
+  .theme-switch {
+    display: flex; align-items: center;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  .switch input {
+    opacity: 0; width: 0; height: 0;
+  }
+  .slider {
+    background-color: #555;
+    border-radius: 34px;
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    transition: 0.4s;
+  }
+  .slider:before {
+    content: "🌞";
+    position: absolute;
+    height: 24px; width: 24px;
+    left: 3px; bottom: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    transition: 0.4s;
+  }
+  input:checked + .slider {
+    background-color: #222;
+  }
+  input:checked + .slider:before {
+    transform: translateX(28px);
+    content: "🌙";
+  }
+  header {
+    text-align: center;
+    padding: 80px 20px;
+  }
+  header h1 {
+    font-size: 48px;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+    color: var(--accent);
+  }
+  header p {
+    font-size: 18px;
+    opacity: 0.8;
+  }
+  header img {
+    margin-top: 30px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+  }
+  header img:hover {
+    transform: scale(1.08);
+  }
+  section {
+    padding: 60px 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  h2.section-title {
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
+  .menu-grid {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .menu-card {
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    width: 250px;
+    color: var(--text);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  }
+  .menu-card img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  .menu-card h3 {
+    margin-top: 15px;
+    color: var(--accent);
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+  }
+  /* Contact Form */
+  form {
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--text);
+  }
+  form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-family: inherit;
+  }
+  form textarea {
+    resize: vertical;
+  }
+  form button {
+    background: var(--accent);
+    border: none;
+    padding: 15px 30px;
+    color: var(--bg);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  form button:hover {
+    background: #b28850;
+  }
+  .error {
+    color: #ff6b6b;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  /* Testimonials */
+  .testimonial-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .testimonial-slide {
+    display: none;
+    background: var(--card-bg);
+    backdrop-filter: var(--blur);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    color: var(--text);
+    font-style: italic;
+    text-align: center;
+    min-height: 150px;
+  }
+  .testimonial-slide.active {
+    display: block;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  .testimonial-author {
+    margin-top: 15px;
+    font-weight: 700;
+    font-style: normal;
+    color: var(--accent);
+  }
+  .testimonial-buttons {
+    margin-top: 15px;
+    text-align: center;
+  }
+  .testimonial-buttons button {
+    background: var(--accent);
+    border: none;
+    margin: 0 5px;
+    padding: 8px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .testimonial-buttons button:hover {
+    background: #b28850;
+  }
+  /* Animations */
+  .fade-in {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+    background: rgba(0,0,0,0.4);
+    color: var(--text);
+  }
+  /* Dark mode */
+  body.dark {
+    --bg: linear-gradient(135deg, #000000, #2c2c2c);
+    --text: #ffffffd9;
+    --accent: #f1c27d;
+    --card-bg: rgba(255, 255, 255, 0.08);
+  }
+  /* Custom Cursor */
+  #cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cursor-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.3s ease, border-color 0.3s ease;
+    z-index: 9999;
+    mix-blend-mode: difference;
+  }
+  #cursor.hovered {
+    width: 40px;
+    height: 40px;
+    background-color: var(--cursor-color);
+    border-color: var(--cursor-color);
+  }
+  /* Responsive */
+  @media(max-width: 700px) {
+    .menu-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+    nav {
+      padding: 15px 20px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    nav ul {
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      font-size: 36px;
+    }
+  }
+  /* Sound toggle */
+  #sound-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent);
+    border: none;
+    padding: 12px 18px;
+    font-size: 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+    z-index: 10000;
+  }
+  #sound-toggle:hover {
+    background: #b28850;
+  }
+  /* Start sound button */
+  #start-sound {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    z-index: 10001;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--accent);
+    border: none;
+    color: var(--bg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: background 0.3s ease;
+  }
+  #start-sound:hover {
+    background: #b28850;
+  }
+</style>
+</head>
+<body>
+
+  <div id="cursor"></div>
+
+  <nav>
+    <div class="logo">Velvet Brew</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#map">Find Us</a></li>
+    </ul>
+    <div class="theme-switch">
+      <input type="checkbox" id="toggle-theme" />
+      <label for="toggle-theme" class="switch">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </nav>
+
+  <section id="about" class="fade-in">
+    <h2 class="section-title">About Velvet Brew</h2>
+    <p style="max-width: 700px; margin: 0 auto; font-size: 18px; text-align: center; line-height: 1.6;">
+      Velvet Brew Café is your cozy escape in the city, serving hand-crafted coffees with rich aromas and warm hospitality. 
+      Our mission is to make every sip a memorable experience — from classic espresso to creative seasonal blends.
+    </p>
+    <div style="text-align: center;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6SvxskpqfXTHxIc4xRkzVzxIyhxl9djytj8bgv9dlgO8yxrE&s" alt="Delicious cup of coffee" width="300" height="200" />
+    </div>
+  </section>
+
+  <!-- Added Map Section here -->
+  <section id="map" style="padding: 60px 30px; max-width: 1000px; margin: 0 auto;">
+    <h2 class="section-title">Find Us Here</h2>
+    <div style="width: 100%; height: 400px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.4);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.021098316698!2d-122.41941508468162!3d37.77492977975901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c5d1a3a5d%3A0x79e81c2d73198e40!2sCoffee%20Shop!5e0!3m2!1sen!2sus!4v1698473582573!5m2!1sen!2sus"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Velvet Brew Location"
+      ></iframe>
+    </div>
+  </section>
+
+  <header class="fade-in">
+    <h1>Welcome to Velvet Brew</h1>
+    <p>Where every cup tells a story ☕</p>
+    <div style="text-align: center; margin-top: 20px;">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" alt="Freshly brewed coffee" width="300" height="200" style="display: block; margin: 0 auto;" />
+    </div>
+  </header>
+
+  <section class="menu-section fade-in" id="menu">
+    <h2 class="section-title">Signature Brews</h2>
+    <div class="menu-grid">
+      <div class="menu-card hover-target">
+        <img 
+  src="https://images.pexels.com/photos/32107359/pexels-photo-32107359.jpeg" 
+  alt="Espresso served on a wooden table" 
+  width="300" 
+  height="200" 
+  style="display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+/>
+
+        <h3>Espresso</h3>
+      </div>
+      <div class="menu-card hover-target">
+        <img 
+  src="https://images.pexels.com/photos/302901/pexels-photo-302901.jpeg" 
+  alt="Mocha Coffee in a White Cup" 
+  width="300" 
+  height="200" 
+  style="display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+/>
+
+        <h3>Mocha</h3>
+      </div>
+      <div class="menu-card hover-target">
+    
+        <img 
+        src="https://cdn.loveandlemons.com/wp-content/uploads/2025/05/iced-coffee-recipe-580x729.jpg" 
+        alt="Iced Coffee" 
+        width="300" 
+        height="200" 
+        style="display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.3);" 
+      />
+      
+
+      
+
+
+        <h3>Iced Coffee</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in" id="testimonials">
+    <h2 class="section-title">What Our Customers Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial-slide active">
+        <p>"Best coffee in town! The ambiance and flavors are unmatched."</p>
+        <div class="testimonial-author">– Priya S.</div>
+      </div>
+      <div class="testimonial-slide">
+        <p>"I love the mocha here — creamy and rich, perfect every time."</p>
+        <div class="testimonial-author">– Arjun M.</div>
+      </div>
+      <div class="testimonial-slide">
+        <p>"Cozy place and amazing service. Highly recommend Velvet Brew."</p>
+        <div class="testimonial-author">– Neha K.</div>
+      </div>
+    </div>
+    <div class="testimonial-buttons">
+      <button aria-label="Previous testimonial">&#8592;</button>
+      <button aria-label="Next testimonial">&#8594;</button>
+    </div>
+  </section>
+
+  <section class="fade-in" id="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <form id="contact-form" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+      <div class="error" id="name-error"></div>
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+      <div class="error" id="email-error"></div>
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+      <div class="error" id="message-error"></div>
+      
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <button id="sound-toggle" aria-label="Toggle coffee shop background sound">🔊</button>
+  <button id="start-sound" aria-label="Start coffee shop background sound">Start Sound</button>
+
+  <footer>
+    &copy; 2025 Velvet Brew Café | Crafted with ☕ &amp; ❤️ by Esha Malik
+  </footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .hover-target').forEach(elem => {
+    elem.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+    elem.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+  });
+
+  // Theme toggle
+  const toggleTheme = document.getElementById('toggle-theme');
+  toggleTheme.addEventListener('change', () => {
+    document.body.classList.toggle('dark', toggleTheme.checked);
+  });
+
+  // Testimonial slider
+  const testimonials = document.querySelectorAll('.testimonial-slide');
+  const prevBtn = document.querySelector('.testimonial-buttons button:first-child');
+  const nextBtn = document.querySelector('.testimonial-buttons button:last-child');
+  let currentIndex = 0;
+
+  function showTestimonial(index) {
+    testimonials.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+  }
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(currentIndex);
+  });
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    showTestimonial(currentIndex);
+  });
+
+  // Contact form validation
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let valid = true;
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    // Name validation
+    if (name.length < 3) {
+      document.getElementById('name-error').textContent = 'Please enter a valid name (at least 3 characters).';
+      valid = false;
+    } else {
+      document.getElementById('name-error').textContent = '';
+    }
+
+    // Email validation simple regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      document.getElementById('email-error').textContent = 'Please enter a valid email.';
+      valid = false;
+    } else {
+      document.getElementById('email-error').textContent = '';
+    }
+
+    // Message validation
+    if (message.length < 10) {
+      document.getElementById('message-error').textContent = 'Message should be at least 10 characters.';
+      valid = false;
+    } else {
+      document.getElementById('message-error').textContent = '';
+    }
+
+    if(valid) {
+      alert(`Thank you for contacting us, ${name}! We will get back to you soon.`);
+      form.reset();
+    }
+  });
+
+  // Background coffee shop sound
+  const soundToggle = document.getElementById('sound-toggle');
+  const startSoundBtn = document.getElementById('start-sound');
+  const audio = new Audio('https://cdn.pixabay.com/download/audio/2022/03/23/audio_2bbdd72e24.mp3?filename=coffee-shop-ambience-5813.mp3');
+  audio.loop = true;
+  audio.volume = 0.3;
+  audio.muted = true; // initially muted
+
+  startSoundBtn.addEventListener('click', () => {
+    audio.muted = false;
+    audio.play();
+    startSoundBtn.style.display = 'none';
+  });
+
+  soundToggle.addEventListener('click', () => {
+    if(audio.paused) {
+      audio.play();
+      
+      audio.muted = false;
+      soundToggle.textContent = "🔊";
+    } else {
+      audio.pause();
+      soundToggle.textContent = "🔈";
+    }
+  });
+</script>
+
+</body>
+</html>
+
