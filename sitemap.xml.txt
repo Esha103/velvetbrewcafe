@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/#about</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/#menu</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/#gallery</loc>
+    <priority>0.70</priority>
+  </url>
+
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/#testimonials</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://www.velvetbrewcafe.com/#contact</loc>
+    <priority>0.90</priority>
+  </url>
+
+</urlset>
+
