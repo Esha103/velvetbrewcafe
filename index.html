@@ -378,6 +378,25 @@
 </style>
 </head>
 <body>
+  <!-- Buttons Section -->
+<div style="text-align:center; margin: 20px;">
+  <button onclick="gtag('event', 'menu_click', { 
+      'event_category': 'Engagement', 
+      'event_label': 'View Menu Button' 
+    });" 
+    style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+    View Menu
+  </button>
+
+  <button onclick="gtag('event', 'order_click', { 
+      'event_category': 'Ecommerce', 
+      'event_label': 'Order Now Button' 
+    });" 
+    style="padding: 10px 20px; font-size: 16px; cursor: pointer; margin-left:10px;">
+    Order Now
+  </button>
+</div>
+
 
   <div id="cursor"></div>
 
@@ -633,5 +652,6 @@
 
 </body>
 </html>
+
 
 
